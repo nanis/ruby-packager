@@ -37,8 +37,6 @@ class Packager
           dest = (file.dest || '').gsub /^\//, ''
           FileUtils.mkdir_p File.dirname(dest)
           if file.link
-            source = (file.source || '').gsub /^\//, ''
-            FileUtils.mkdir_p File.dirname(source)
             FileUtils.ln_s(file.source, dest, force: true)
           else
             FileUtils.cp_r(file.source, dest)
