@@ -74,6 +74,7 @@ class Packager
 
       x = `#{cmd.to_system.join(' ')}`
       rv = eval(x)
+      raise rv[:error] if rv[:error]
       raise rv[:message] if rv[:level] == :error
       return rv[:path]
     end
